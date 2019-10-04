@@ -9,7 +9,6 @@ import {
 import NavigationView from './src/Modules/Navigation/NavigationView';
 export default class App extends Component<Props> {
   render() {
-    console.warn('this.props', this.props);
     return (
       <View
         style={{

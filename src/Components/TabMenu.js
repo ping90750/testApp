@@ -5,9 +5,9 @@ import {
   View,
   Platform,
   Text,
-  Dimensions
+  Dimensions,
 } from 'react-native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
 import {Footer, FooterTab, Button} from 'native-base';
 
 const width = Dimensions.get('window').width;
@@ -27,7 +27,7 @@ export default class DrawerMenu extends Component<Props> {
       HomeActive: false,
       SettingsActive: false,
       HistoryActive: false,
-      OtherActive: false
+      OtherActive: false,
     };
   }
 
@@ -62,119 +62,91 @@ export default class DrawerMenu extends Component<Props> {
   };
 
   render() {
-    return (<Footer>
-      <FooterTab style={styles.footerStyle}>
-        <Button onPress={() => this._redirectToHome()} style={this.state.HomeActive
-            ? styles.activeMenuItem
-            : styles.menuItem
-}>
-          <FontAwesomeIcon name="home" size={width * 0.1} style={this.state.HomeActive
-              ? {
-                color: '#317AFF'
+    return (
+      <Footer>
+        <FooterTab style={styles.footerStyle}>
+          <Button
+            onPress={() => this._redirectToHome()}
+            style={
+              this.state.HomeActive ? styles.activeMenuItem : styles.menuItem
+            }>
+            <Image
+              resizeMode={'contain'}
+              source={
+                this.state.HomeActive
+                  ? require('../Image/homeActive.png')
+                  : require('../Image/home.png')
               }
-              : {
-                color: '#636363'
+              style={styles.imageLogo}
+            />
+          </Button>
+          <Button
+            onPress={() => this._redirectToOther()}
+            style={
+              this.state.OtherActive ? styles.activeMenuItem : styles.menuItem
+            }>
+            <Image
+              resizeMode={'contain'}
+              source={
+                this.state.OtherActive
+                  ? require('../Image/markerActive.png')
+                  : require('../Image/marker.png')
               }
-}/>
-          <Text style={this.state.HomeActive
-              ? {
-                color: '#317AFF'
+              style={styles.imageLogo}
+            />
+          </Button>
+          <Button
+            onPress={() => this._redirectToHistory()}
+            style={
+              this.state.HistoryActive ? styles.activeMenuItem : styles.menuItem
+            }>
+            <Image
+              resizeMode={'contain'}
+              source={
+                this.state.HistoryActive
+                  ? require('../Image/clockActive.png')
+                  : require('../Image/clock.png')
               }
-              : {
-                color: '#636363'
+              style={styles.imageLogo}
+            />
+          </Button>
+          <Button
+            onPress={() => this._redirectToSettings()}
+            style={
+              this.state.SettingsActive
+                ? styles.activeMenuItem
+                : styles.menuItem
+            }>
+            <Image
+              resizeMode={'contain'}
+              source={
+                this.state.SettingsActive
+                  ? require('../Image/settingsActive.png')
+                  : require('../Image/settings.png')
               }
-}>
-            {'Home'}
-          </Text>
-        </Button>
-        <Button onPress={() => this._redirectToOther()} style={this.state.OtherActive
-            ? styles.activeMenuItem
-            : styles.menuItem
-}>
-          <FontAwesomeIcon name="home" size={width * 0.1} style={this.state.OtherActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}/>
-          <Text style={this.state.OtherActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}>
-            {'Other'}
-          </Text>
-        </Button>
-        <Button onPress={() => this._redirectToHistory()} style={this.state.HistoryActive
-            ? styles.activeMenuItem
-            : styles.menuItem
-}>
-          <FontAwesomeIcon name="home" size={width * 0.1} style={this.state.HistoryActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}/>
-          <Text style={this.state.HistoryActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}>
-            {'History'}
-          </Text>
-        </Button>
-        <Button onPress={() => this._redirectToSettings()} style={this.state.SettingsActive
-            ? styles.activeMenuItem
-            : styles.menuItem
-}>
-          <FontAwesomeIcon name="home" size={width * 0.1} style={this.state.SettingsActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}/>
-          <Text style={this.state.SettingsActive
-              ? {
-                color: '#317AFF'
-              }
-              : {
-                color: '#636363'
-              }
-}>
-            {'Settings'}
-          </Text>
-        </Button>
-      </FooterTab>
-    </Footer>);
+              style={styles.imageLogo}
+            />
+          </Button>
+        </FooterTab>
+      </Footer>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   activeMenuItem: {
-    backgroundColor: '#fff',
-    borderRadius: 0
+    backgroundColor: '#1A4A48',
+    borderRadius: 0,
   },
   menuItem: {
-    backgroundColor: '#fff',
-    borderRadius: 0
+    backgroundColor: '#1A4A48',
+    borderRadius: 0,
   },
   imageLogo: {
     width: width * 0.05,
-    height: height * 0.03
+    height: height * 0.04,
   },
   footerStyle: {
-    backgroundColor: '#1A4A48'
-  }
+    backgroundColor: '#1A4A48',
+  },
 });
