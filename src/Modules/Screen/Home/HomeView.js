@@ -82,7 +82,8 @@ export default class HomeView extends Component<Props> {
                 alignSelf: 'center'
               }}>
               <Text style={{
-                  marginTop: 2
+                  marginTop: 2,
+                  color: 'white'
                 }}>
                 {this.state.email}
               </Text>
